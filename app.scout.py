@@ -17,7 +17,7 @@ if "messages" not in st.session_state:
 
 # チャットボットとやりとりする関数
 def communicate(job_content, ideal_candidate, company_pr, candidate_info, feedback=None):
-    messages = st.session_state["messages"]
+    messages = st.session_state["messages"].copy()  # メッセージリストをコピー
 
     user_message = {"role": "user", "content": f"求人内容: {job_content}\n求める人物像: {ideal_candidate}\nPR: {company_pr}\n求職者情報: {candidate_info}"}
     messages.append(user_message)
@@ -33,7 +33,7 @@ def communicate(job_content, ideal_candidate, company_pr, candidate_info, feedba
     )  
 
     bot_message = response["choices"][0]["message"]
-    messages.append(bot_message)
+    st.session_state["messages"].append(bot_message)  # ここでグローバルのメッセージリストにボットのメッセージを追加
 
     return bot_message
 

@@ -1,4 +1,3 @@
-
 import streamlit as st
 import openai
 
@@ -14,6 +13,7 @@ if "messages" not in st.session_state:
     st.session_state["ideal_candidate"] = ""
     st.session_state["company_pr"] = ""
     st.session_state["candidate_info"] = ""
+    st.session_state["feedbacks"] = []  # feedbacksの初期化を追加
 
 # チャットボットとやりとりする関数
 def communicate(job_content, ideal_candidate, company_pr, candidate_info, feedback=None):
@@ -74,3 +74,4 @@ if st.button("リセット"):
     st.session_state["ideal_candidate"] = ""
     st.session_state["company_pr"] = ""
     st.session_state["candidate_info"] = ""
+    st.session_state["feedbacks"] = []  # リセット時にもfeedbacksを初期化

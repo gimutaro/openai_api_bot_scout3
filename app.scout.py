@@ -60,7 +60,8 @@ if st.button("フィードバックを送信"):
     if st.session_state["messages"]:
         st.write("フィードバック前のメッセージ：")
         for message in st.session_state["messages"]:
-            st.write("🤖: " + message["content"])
+            if message["role"] == "user":  # ユーザーからのメッセージのみ表示
+                st.write("👤: " + message["content"])
     st.session_state["feedbacks"].append(feedback)
     result = communicate(job_content, ideal_candidate, company_pr, candidate_info, feedback)
     st.write("フィードバックを受け取りました！ AIがスカウトメッセージを修正しました：")

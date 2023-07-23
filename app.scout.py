@@ -38,7 +38,7 @@ def communicate(job_content, ideal_candidate, company_pr, candidate_info, feedba
     return bot_message
 
 # ユーザーインターフェイスの構築
-st.title("My Scout Message Assistant")
+st.title("スカウトメッセージ作成bot")
 st.image("syukyaku.jpg")
 st.write("OpenAI's ChatGPTを使って、スカウトメッセージを作成します。")
 
